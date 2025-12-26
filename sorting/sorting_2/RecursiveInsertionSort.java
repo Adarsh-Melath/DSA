@@ -6,6 +6,26 @@ import java.util.Arrays;
  * This class demonstrates Recursive Insertion Sort.
  * The array is sorted in ascending order using recursion
  * instead of the traditional iterative insertion sort.
+ *
+ * Time Complexity:
+ * Best Case: O(n)
+ * - Occurs when the array is already sorted.
+ * - Each element is compared once with no shifts.
+ *
+ * Average Case: O(n^2)
+ * - Occurs when the elements are in random order.
+ * - Each element may need to be compared and shifted
+ * multiple times.
+ *
+ * Worst Case: O(n^2)
+ * - Occurs when the array is sorted in reverse order.
+ * - Each new element is shifted across the entire
+ * sorted portion.
+ *
+ * Space Complexity:
+ * O(n)
+ * - Due to recursive call stack.
+ * - No extra data structures are used.
  */
 public class RecursiveInsertionSort {
 
