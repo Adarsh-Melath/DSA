@@ -1,4 +1,3 @@
-package arrays.problems.easy;
 
 /**
  * This class demonstrates different approaches

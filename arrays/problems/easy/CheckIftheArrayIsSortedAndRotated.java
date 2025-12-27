@@ -1,4 +1,3 @@
-package arrays.problems.easy;
 
 /**
  * This class checks whether an array is sorted

@@ -1,4 +1,3 @@
-package arrays.problems.easy;
 
 public class CheckIfTheArrayIsSorted {
   public static void main(String[] args) {
