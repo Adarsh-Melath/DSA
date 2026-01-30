@@ -6,10 +6,10 @@ public class LargestSubArrayWithSum0 {
         int[] arr = { 15, -2, 2, -8, 1, 7, 10, 23 };
 
         System.out.println(bruteForce(arr));
-        System.out.println(betterSolution(arr));
+        System.out.println(optimalSolution(arr));
     }
 
-    public static int betterSolution(int[] arr) {
+    public static int optimalSolution(int[] arr) {
         int length = 0;
         Map<Integer, Integer> prefixSum = new HashMap<>();
         int sum = 0;
