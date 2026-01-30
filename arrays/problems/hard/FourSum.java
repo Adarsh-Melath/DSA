@@ -11,7 +11,9 @@ public class FourSum {
         int target = 7;
 
         // System.out.println(Arrays.toString(bruteForce(numbers, target).toArray()));
-        System.out.println(Arrays.deepToString(betterSolution(numbers, target).toArray()));
+        // System.out.println(Arrays.deepToString(betterSolution(numbers,
+        // target).toArray()));
+        System.out.println(Arrays.deepToString(optimalSolution(numbers, target).toArray()));
     }
 
     public static List<Integer> bruteForce(int[] numbers, int target) {
@@ -57,9 +59,42 @@ public class FourSum {
                     set.add(numbers[k]);
                 }
             }
-
         }
+        return elements;
+    }
 
+    public static List<List<Integer>> optimalSolution(int[] numbers, int target) {
+
+        int n = numbers.length;
+        List<List<Integer>> elements = new ArrayList<>();
+        Arrays.sort(numbers);
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && numbers[i] == numbers[i - 1])
+                continue;
+            for (int j = i + 1; j < n; j++) {
+                if (j != i + 1 && numbers[j] == numbers[j - 1])
+                    continue;
+                int k = j + 1;
+                int l = n - 1;
+
+                while (k < l) {
+                    int sum = numbers[i] + numbers[j] + numbers[k] + numbers[l];
+
+                    if (sum == target) {
+                        elements.add(Arrays.asList(numbers[i], numbers[j], numbers[k], numbers[l]));
+                        k++;
+                        l++;
+                        while (k < l && numbers[k] == numbers[k - 1])
+                            k++;
+                        while (k < l && numbers[l] == numbers[l + 1])
+                            l--;
+                    } else if (sum > target)
+                        l--;
+                    else
+                        k++;
+                }
+            }
+        }
         return elements;
     }
 }
