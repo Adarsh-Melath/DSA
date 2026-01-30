@@ -7,8 +7,8 @@ import java.util.HashSet;
 
 public class FourSum {
     public static void main(String[] args) {
-        int[] numbers = { 1, -2, 3, 5, 7, 9 };
-        int target = 7;
+        int[] numbers = { 1000000000, 1000000000, 1000000000, 1000000000 };
+        int target = -294967296;
 
         // System.out.println(Arrays.toString(bruteForce(numbers, target).toArray()));
         // System.out.println(Arrays.deepToString(betterSolution(numbers,
@@ -78,12 +78,11 @@ public class FourSum {
                 int l = n - 1;
 
                 while (k < l) {
-                    int sum = numbers[i] + numbers[j] + numbers[k] + numbers[l];
-
+                    long sum = (long)numbers[i] + numbers[j] + numbers[k] + numbers[l];
                     if (sum == target) {
                         elements.add(Arrays.asList(numbers[i], numbers[j], numbers[k], numbers[l]));
                         k++;
-                        l++;
+                        l--;
                         while (k < l && numbers[k] == numbers[k - 1])
                             k++;
                         while (k < l && numbers[l] == numbers[l + 1])
