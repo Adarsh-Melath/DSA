@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,11 +16,13 @@ public class MergeAllOverlappingIntervals {
         int n = arr.length;
         List<List<Integer>> ans = new ArrayList<>();
 
+        Arrays.sort(arr, (a, b) -> a[0] - b[0]);
+
         for (int i = 0; i < arr.length; i++) {
             if (ans.isEmpty() || arr[i][0] > ans.get(ans.size() - 1).get(1)) {
                 ans.add(Arrays.asList(arr[i][0], arr[i][1]));
             } else {
-                int last = ans.size()-1;
+                int last = ans.size() - 1;
                 int maxEnd = Math.max(ans.get(ans.size() - 1).get(1), arr[i][1]);
                 ans.get(last).set(1, maxEnd);
             }
