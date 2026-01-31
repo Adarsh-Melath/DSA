@@ -7,10 +7,10 @@ public class MergeTwoArray {
         int[] arr2 = { -3, 1, 8 };
 
         // bruteForce(arr1, arr2, arr1.length, arr2.length);
-        betterSolution(arr1, arr2, arr1.length, arr2.length);
+        optimalSolution(arr1, arr2, arr1.length, arr2.length);
     }
 
-    public static void betterSolution(int[] arr1, int[] arr2, int m, int n)
+    public static void optimalSolution(int[] arr1, int[] arr2, int m, int n)
     {
         int endOfFirst = arr1.length-1;
         int startOfSecond = 0;
