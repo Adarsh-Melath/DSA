@@ -7,33 +7,61 @@ public class MergeTwoArray {
         int[] arr2 = { -3, 1, 8 };
 
         // bruteForce(arr1, arr2, arr1.length, arr2.length);
-        optimalSolution(arr1, arr2, arr1.length, arr2.length);
+        optimalSolution1(arr1, arr2, arr1.length, arr2.length);
+        optimalSolution2(arr1, arr2, 0, 0);
     }
 
-    public static void optimalSolution(int[] arr1, int[] arr2, int m, int n)
-    {
-        int endOfFirst = arr1.length-1;
+    public static void swapifGreater(int[] arr1, int[] arr2, int i, int j) {
+        if (arr1[i] > arr2[j]) {
+            int temp = arr1[i];
+            arr1[i] = arr2[j];
+            arr2[j] = temp;
+        }
+    }
+
+    public static void optimalSolution2(int[] arr1, int[] arr2, int m, int n) {
+        int len = m + n;
+        int gap = (int) Math.ceil(m + n);
+
+        while (gap > 0) {
+            int left = 0;
+            int right = left + gap;
+            while (right < len) {
+                if (left < n && right >= n) {
+                    swapifGreater(arr1, arr2, left, right - n);
+                } else if (left >= n) {
+                    swapifGreater(arr1, arr2, left - n, right - n);
+                } else {
+                    swapifGreater(arr1, arr2, left, right);
+                }
+            }
+            gap = gap / 2;
+        }
+
+        System.out.println(Arrays.toString(arr1));
+        System.out.println(Arrays.toString(arr2));
+    }
+
+    public static void optimalSolution1(int[] arr1, int[] arr2, int m, int n) {
+        int endOfFirst = arr1.length - 1;
         int startOfSecond = 0;
 
-        while(endOfFirst>=0 && startOfSecond<arr2.length)
-        {
-            if(arr1[endOfFirst]>arr2[startOfSecond])
-            {
+        while (endOfFirst >= 0 && startOfSecond < arr2.length) {
+            if (arr1[endOfFirst] > arr2[startOfSecond]) {
                 int temp = arr1[endOfFirst];
                 arr1[endOfFirst] = arr2[startOfSecond];
                 arr2[startOfSecond] = temp;
 
                 endOfFirst--;
                 startOfSecond++;
-            }
-            else {
+            } else {
                 break;
             }
         }
 
         Arrays.sort(arr1);
         Arrays.sort(arr2);
-        
+
         System.out.println(Arrays.toString(arr1));
         System.out.println(Arrays.toString(arr2));
     }
