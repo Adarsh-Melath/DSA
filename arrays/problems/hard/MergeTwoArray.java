@@ -34,8 +34,12 @@ public class MergeTwoArray {
                 } else {
                     swapifGreater(arr1, arr2, left, right);
                 }
+                left++;
+                right++;
             }
-            gap = gap / 2;
+            if (gap == 1)
+                break;
+            gap=(int)Math.ceil(gap/2.0);
         }
 
         System.out.println(Arrays.toString(arr1));
