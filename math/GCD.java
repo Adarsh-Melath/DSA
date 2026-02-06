@@ -1,5 +1,4 @@
 package math;
-
 public class GCD {
     public static void main(String[] args) {
         int number1 = 12;
